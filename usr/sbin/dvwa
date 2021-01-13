@@ -14,6 +14,7 @@ function start () {
 }
 
 docker || apt install -y docker docker.io
+docker info || systemctl start docker
 
 start
 
