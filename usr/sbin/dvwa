@@ -15,6 +15,5 @@ function start () {
 
 docker || apt install -y docker docker.io
 
-#container-rm ${CONTAINER_NAME}
 start
-#container-alive-monitor ${CONTAINER_NAME}
+
