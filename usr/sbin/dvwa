@@ -8,16 +8,16 @@ CONTAINER_IMAGE=vulnerables/web-dvwa:latest
 
 function start () {
     docker pull ${CONTAINER_IMAGE}
-	sudo -E docker run -d -t --entrypoint "/bin/sh" --name ${CONTAINER_NAME} \
+	sudo -E docker run -t --entrypoint "/bin/sh" --name ${CONTAINER_NAME} \
 		-p 10.55.56.10:80:80/tcp \
-		${CONTAINER_IMAGE} || sudo docker start ${CONTAINER_NAME}
+		${CONTAINER_IMAGE} || sudo docker start -a -i ${CONTAINER_NAME}
 }
 
 case ${1} in
 
 	start)
 		docker || apt install -y docker docker.io
-		docker info || systemctl start docker
+		docker info || (systemctl start docker ; sleep 300)
 		start
 		;;
 
@@ -26,6 +26,7 @@ case ${1} in
 		;;
 
 	rm)
+		docker stop ${CONTAINER_NAME} || echo "${CONTAINER_NAME} not running
 		docker rm ${CONTAINER_NAME} || echo "${CONTAINER_NAME} doesn't exist"
 		;;
 
