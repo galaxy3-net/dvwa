@@ -14,14 +14,18 @@ mkdir -p /srv/
 ls /srv/dvwa || git clone --branch dvwa https://github.com/galaxy3-net/dvwa.git /srv/dvwa
 (cd /srv/dvwa && git pull)
 
-cp /srv/splunk/usr/sbin/dvwa /usr/sbin/dvwa
+cp /srv/dvwa/usr/sbin/dvwa /usr/sbin/dvwa
 chown root:root /usr/sbin/dvwa
 chmod 0700 /usr/sbin/dvwa
-cp /srv/splunk/etc/supervisor/conf.d/dvwa.conf /etc/supervisor/conf.d/dvwa.conf
+cp /srv/dvwa/etc/supervisor/conf.d/dvwa.conf /etc/supervisor/conf.d/dvwa.conf
+cp /srv/dvwa/etc/systemd/system/dvwa.service /etc/systemd/system/dvwa.service
 chown root:root /etc/supervisor/conf.d/dvwa.conf
 chmod 0400 /etc/supervisor/conf.d/dvwa.conf
+chown root:root /etc/systemd/system/dvwa.service
+chmod 0400 /etc/systemd/system/dvwa.service
 
-supervisorctl reread
-supervisorctl update
+#supervisorctl reread
+#supervisorctl update
 
 
+# bash <(curl -s https://raw.githubusercontent.com/galaxy3-net/dvwa/dvwa/Deploy)
