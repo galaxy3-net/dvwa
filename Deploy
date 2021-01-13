@@ -11,7 +11,7 @@ __EOF__
 }
 set -x
 mkdir -p /srv/
-ls /srv/dvwa || git clone -branch dvwa https://github.com/galaxy3-net/dvwa.git /srv/dvwa
+ls /srv/dvwa || git clone --branch dvwa https://github.com/galaxy3-net/dvwa.git /srv/dvwa
 (cd /srv/dvwa && git pull)
 
 cp /srv/splunk/usr/sbin/dvwa /usr/sbin/dvwa
