@@ -13,8 +13,23 @@ function start () {
 		${CONTAINER_IMAGE} || sudo docker start ${CONTAINER_NAME}
 }
 
-docker || apt install -y docker docker.io
-docker info || systemctl start docker
+case ${1} in
 
-start
+	start)
+		docker || apt install -y docker docker.io
+		docker info || systemctl start docker
+		start
+		;;
 
+	stop)
+		docker stop ${CONTAINER_NAME} || echo "${CONTAINER_NAME} not running"
+		;;
+
+	rm)
+		docker rm ${CONTAINER_NAME} || echo "${CONTAINER_NAME} doesn't exist"
+		;;
+
+	*)
+		echo "Usage: ${1} [start | stop | rm]"
+		;;
+esac
