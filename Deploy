@@ -17,10 +17,7 @@ ls /srv/dvwa || git clone --branch dvwa https://github.com/galaxy3-net/dvwa.git 
 cp /srv/dvwa/usr/sbin/dvwa /usr/sbin/dvwa
 chown root:root /usr/sbin/dvwa
 chmod 0700 /usr/sbin/dvwa
-cp /srv/dvwa/etc/supervisor/conf.d/dvwa.conf /etc/supervisor/conf.d/dvwa.conf
 cp /srv/dvwa/etc/systemd/system/dvwa.service /etc/systemd/system/dvwa.service
-chown root:root /etc/supervisor/conf.d/dvwa.conf
-chmod 0400 /etc/supervisor/conf.d/dvwa.conf
 chown root:root /etc/systemd/system/dvwa.service
 chmod 0400 /etc/systemd/system/dvwa.service
 
