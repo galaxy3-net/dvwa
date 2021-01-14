@@ -26,7 +26,7 @@ case ${1} in
 		;;
 
 	rm)
-		docker stop ${CONTAINER_NAME} || echo "${CONTAINER_NAME} not running
+		docker stop ${CONTAINER_NAME} || echo "${CONTAINER_NAME} not running"
 		docker rm ${CONTAINER_NAME} || echo "${CONTAINER_NAME} doesn't exist"
 		;;
 
